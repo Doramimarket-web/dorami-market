@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="브랜드별 아동복을 편리하게 둘러보고 주문할 수 있는 도라미마켓입니다.">
+  <meta name="theme-color" content="#fff4a8">
+  <title>도라미마켓 | 아동복 셀렉트숍</title>
+  <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#catalog">상품 목록으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-identity" id="site-identity" href="./" aria-label="도라미마켓 홈">
+        <span><strong id="site-name">도라미마켓</strong><small id="site-label">DORAMI MARKET</small></span>
+      </a>
+      <button class="cart-button" id="open-cart" type="button" aria-label="장바구니 열기">
+        <span aria-hidden="true">Bag</span>
+        <strong id="cart-count" aria-live="polite">0</strong>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 class="sr-only" id="hero-title">도라미마켓 아동복 컬렉션</h1>
+      <img class="hero__image" id="hero-image" src="./assets/images/KakaoTalk_Photo_2026-11-19-23-07-13.png" alt="연한 노란색 배경에 파란 손그림 캐릭터 두 명과 도라미마켓, Kids’ boutique 문구가 있는 배너">
+    </section>
+
+    <nav class="brand-nav" aria-label="브랜드 바로가기">
+      <div class="brand-nav__inner">
+        <div class="brand-nav__heading">
+          <div>
+            <p class="eyebrow">SHOP BY BRAND</p>
+            <h2>브랜드로 찾아보기</h2>
+          </div>
+          <button class="brand-all-button" id="open-all-brands" type="button" aria-haspopup="dialog">전체 브랜드 <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="brand-chips" id="brand-chips" aria-label="주요 브랜드 필터"></div>
+      </div>
+    </nav>
+
+    <section class="catalog-shell" id="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-heading">
+        <div>
+          <p class="eyebrow">COLLECTION</p>
+          <h2 id="catalog-title">전체 상품</h2>
+        </div>
+        <p class="result-count" id="result-count" aria-live="polite">상품 정보를 불러오는 중...</p>
+      </div>
+
+      <div class="toolbar" role="search">
+        <label class="search-field">
+          <span class="sr-only">상품 검색</span>
+          <input id="search-input" type="search" placeholder="브랜드 또는 상품명 검색" autocomplete="off">
+        </label>
+        <label>
+          <span class="sr-only">브랜드 선택</span>
+          <select id="brand-select">
+            <option value="">모든 브랜드</option>
+          </select>
+        </label>
+        <button class="button button--soft" id="open-size-guide" type="button">사이즈표</button>
+      </div>
+
+      <div class="notice" id="catalog-notice" role="status" hidden></div>
+      <div class="product-grid" id="product-grid" aria-busy="true"></div>
+      <div class="load-more-wrap">
+        <button class="button button--outline" id="load-more" type="button" hidden>상품 더 보기</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <strong id="footer-name">도라미마켓</strong>
+    <p id="footer-message">상품 문의와 최종 주문은 판매자와 확인해 주세요.</p>
+  </footer>
+
+  <dialog class="modal modal--detail" id="detail-dialog" aria-labelledby="detail-title">
+    <button class="icon-button modal__close" data-close="detail-dialog" type="button" aria-label="상품 상세 닫기">×</button>
+    <div id="detail-content"></div>
+  </dialog>
+
+  <dialog class="modal modal--cart" id="cart-dialog" aria-labelledby="cart-title">
+    <div class="modal__heading">
+      <div><p class="eyebrow">YOUR BAG</p><h2 id="cart-title">장바구니</h2></div>
+      <button class="icon-button" data-close="cart-dialog" type="button" aria-label="장바구니 닫기">×</button>
+    </div>
+    <div id="cart-list" class="cart-list"></div>
+    <label class="check-row" id="first-order-option" hidden><input id="first-order" type="checkbox"> <span id="first-order-label">첫 주문 무료배송 신청</span></label>
+    <div class="cart-summary" id="cart-summary"></div>
+    <button class="button button--primary button--full" id="copy-order" type="button">주문서 복사하기</button>
+  </dialog>
+
+  <dialog class="modal modal--guide" id="size-dialog" aria-labelledby="size-title">
+    <div class="modal__heading">
+      <div><p class="eyebrow">SIZE GUIDE</p><h2 id="size-title">사이즈표</h2></div>
+      <button class="icon-button" data-close="size-dialog" type="button" aria-label="사이즈표 닫기">×</button>
+    </div>
+    <div id="size-content"></div>
+  </dialog>
+
+  <dialog class="modal modal--brands" id="brands-dialog" aria-labelledby="brands-title">
+    <div class="modal__heading">
+      <div><p class="eyebrow">ALL BRANDS</p><h2 id="brands-title">전체 브랜드</h2></div>
+      <button class="icon-button" data-close="brands-dialog" type="button" aria-label="전체 브랜드 닫기">×</button>
+    </div>
+    <div class="brand-directory" id="brand-directory"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>
